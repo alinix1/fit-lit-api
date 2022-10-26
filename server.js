@@ -18,6 +18,10 @@ app.locals = {
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("Express on Vercel");
+});
+
 app.get('/api/v1/users', (req, res) => {
   res.status(200).json(app.locals.users);
 });
@@ -87,3 +91,5 @@ function checkHasAllParams(requiredParams, newData, response) {
 app.listen(port, () => {
   console.log(`${app.locals.title} is now running on http://localhost:${port} !`)
 });
+
+module.exports = app
